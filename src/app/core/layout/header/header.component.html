@@ -1,0 +1,20 @@
+<header class="header">
+  <div class="header__left">
+    <div class="header__logo-circle">LB</div>
+    <div class="header__branding">
+      <span class="header__title">Lipari Bank</span>
+      <span class="header__subtitle">Client Dashboard</span>
+    </div>
+  </div>
+
+  <div class="header__right">
+    <button
+      class="header__logout"
+      *ngIf="isAuthenticated"
+      type="button"
+    >
+      Logout
+    </button>
+  </div>
+</header>
+

@@ -1,0 +1,17 @@
+.app-shell__welcome {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.app-shell__welcome-label {
+  font-size: 0.95rem;
+  color: #6c7a96;
+}
+
+.app-shell__welcome-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+

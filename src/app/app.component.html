@@ -1,0 +1,18 @@
+<main class="app-shell">
+  <div class="app-shell__header">
+    <app-header [isAuthenticated]="isAuthenticated"></app-header>
+  </div>
+
+  <aside class="app-shell__sidebar">
+    <app-sidebar></app-sidebar>
+  </aside>
+
+  <section class="app-shell__main">
+    <div class="app-shell__welcome">
+      <span class="app-shell__welcome-label">Benvenuto,</span>
+      <span class="app-shell__welcome-name">{{ userName() }}</span>
+    </div>
+    <router-outlet></router-outlet>
+  </section>
+</main>
+

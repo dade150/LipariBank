@@ -1,0 +1,69 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.75rem;
+  background: #ffffff;
+  border-bottom: 1px solid var(--lipari-border);
+  box-shadow: 0 6px 18px rgba(11, 35, 64, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header__left {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.header__logo-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: var(--lipari-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.header__branding {
+  display: flex;
+  flex-direction: column;
+}
+
+.header__title {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.header__subtitle {
+  font-size: 0.8rem;
+  color: #6c7a96;
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header__logout {
+  border-radius: 999px;
+  border: 1px solid #ff6b6b;
+  background: #fff5f5;
+  color: #c0392b;
+  padding: 0.4rem 1.1rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.header__logout:hover {
+  background: #ffe3e3;
+  transform: translateY(-1px);
+}
+
