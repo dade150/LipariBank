@@ -59,14 +59,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "lipari-bank-dashboard:build"
+            "buildTarget": "lipari-bank-dashboard:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "lipari-bank-dashboard:build:production"
+              "buildTarget": "lipari-bank-dashboard:build:production"
             },
             "development": {
-              "browserTarget": "lipari-bank-dashboard:build:development"
+              "buildTarget": "lipari-bank-dashboard:build:development"
             }
           },
           "defaultConfiguration": "development"
