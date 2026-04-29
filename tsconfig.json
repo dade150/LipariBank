@@ -16,7 +16,7 @@
       "DOM"
     ],
     "useDefineForClassFields": false,
-    "types": []
+    "types": ["jasmine", "node"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

@@ -1,0 +1,11 @@
+.footer-bank {
+  background-color: #1a237e;
+  color: #ffffff;
+  padding: 16px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: calc(100% - 280px); /* Regola in base alla tua sidebar */
+  z-index: 1000;
+}

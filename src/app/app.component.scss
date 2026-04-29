@@ -1,3 +1,50 @@
+/* 1. Il contenitore principale occupa tutta l'altezza dello schermo */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* 2. Creiamo una riga per Sidebar + Main */
+/* Per farlo funzionare con la tua struttura attuale, 
+   dobbiamo assicurarci che Sidebar e Main siano raggruppati o gestiti */
+.app-shell__sidebar {
+  position: fixed; /* La blocchiamo a sinistra come nella foto */
+  left: 0;
+  top: 60px; /* Altezza stimata dell'header */
+  bottom: 0;
+  width: 280px;
+  background-color: #0d2344; /* Blu della tua banca */
+  overflow-y: auto;
+}
+
+.app-shell__main {
+  margin-left: 280px; /* Spostiamo il contenuto per non farlo finire sotto la sidebar */
+  flex: 1;
+  padding: 2rem;
+  background-color: #f4f7f9;
+}
+
+.app-shell__header {
+  height: 60px;
+  width: 100%;
+  z-index: 100;
+  background: white;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* 3. IL FOOTER: Ora lo spingiamo a destra per allinearlo al contenuto */
+.app-shell__footer {
+  margin-left: 280px; /* Fondamentale: deve iniziare dove finisce la sidebar */
+  padding: 1rem;
+  background-color: white;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #6c7a96;
+}
+
+/* Il tuo CSS del welcome rimane invariato */
 .app-shell__welcome {
   display: flex;
   align-items: baseline;
@@ -14,4 +61,3 @@
   font-size: 1.1rem;
   font-weight: 600;
 }
-
