@@ -4,7 +4,6 @@
   Su desktop questa sidebar è sempre visibile dentro .app-shell__sidebar.
 -->
 <nav class="sidebar" aria-label="Menu principale">
-
   <!-- Brand -->
   <div class="sidebar__section sidebar__section--brand">
     <div class="sidebar__bank-name">Lipari Bank</div>
@@ -27,10 +26,10 @@
         [routerLink]="item.route"
         routerLinkActive="sidebar__item--active"
         (click)="selectSection(item.id)"
-        [attr.aria-label]="item.label">
+        [attr.aria-label]="item.label"
+      >
         <span class="sidebar__item-label">{{ item.label }}</span>
       </a>
     }
   </div>
-
 </nav>

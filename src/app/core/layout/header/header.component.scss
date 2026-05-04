@@ -59,11 +59,12 @@
   padding: 0.4rem 1.1rem;
   font-size: 0.85rem;
   cursor: pointer;
-  transition: background 0.15s ease, transform 0.1s ease;
+  transition:
+    background 0.15s ease,
+    transform 0.1s ease;
 }
 
 .header__logout:hover {
   background: #ffe3e3;
   transform: translateY(-1px);
 }
-

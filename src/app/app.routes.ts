@@ -1,35 +1,48 @@
-import { Routes } from '@angular/router';
-import { DashboardComponent } from './features/dashboard/dashboard.component';
+import { Routes } from "@angular/router";
 
 export const routes: Routes = [
   {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'dashboard',
+    path: "",
+    pathMatch: "full",
+    redirectTo: "dashboard",
   },
   {
-    path: 'dashboard',
-    component: DashboardComponent,
+    path: "dashboard",
+    loadComponent: () =>
+      import("./features/dashboard/dashboard.component").then(
+        (m) => m.DashboardComponent,
+      ),
   },
   {
-    path: 'investimenti',
-    component: DashboardComponent,
+    path: "conto-corrente",
+    loadComponent: () =>
+      import("./features/conto-corrente/conto-corrente/conto-corrente.component").then(
+        (m) => m.ContoCorrenteComponent,
+      ),
   },
   {
-    path: 'polizze',
-    component: DashboardComponent,
-  },
-  // Aggiunte le due route mancanti che impedivano routerLinkActive di attivarsi
-  {
-    path: 'conto-corrente',
-    component: DashboardComponent,
+    path: "investimenti",
+    loadComponent: () =>
+      import("./features/investimenti/investimenti/investimenti.component").then(
+        (m) => m.InvestimentiComponent,
+      ),
   },
   {
-    path: 'amministrazione',
-    component: DashboardComponent,
+    path: "polizze",
+    loadComponent: () =>
+      import("./features/polizze/polizze/polizze.component").then(
+        (m) => m.PolizzeComponent,
+      ),
   },
   {
-    path: '**',
-    redirectTo: 'dashboard',
+    path: "amministrazione",
+    loadComponent: () =>
+      import("./features/amministrazione/amministrazione/amministrazione.component").then(
+        (m) => m.AmministrazioneComponent,
+      ),
+  },
+  {
+    path: "**",
+    redirectTo: "dashboard",
   },
 ];

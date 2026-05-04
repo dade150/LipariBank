@@ -1,22 +1,35 @@
-import { ChangeDetectionStrategy, Component, OnInit, computed, signal, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  computed,
+  signal,
+  inject,
+} from "@angular/core";
+import { RouterOutlet } from "@angular/router";
+import { CommonModule } from "@angular/common";
 
-import { HeaderComponent } from './core/layout/header/header.component';
-import { SidebarComponent } from './core/layout/sidebar/sidebar.component';
-import { UserService, User } from './core/services/user.service';
-import { FooterComponent } from './core/layout/footer/footer.component';
+import { HeaderComponent } from "./core/layout/header/header.component";
+import { SidebarComponent } from "./core/layout/sidebar/sidebar.component";
+import { UserService, User } from "./core/services/user.service";
+import { FooterComponent } from "./core/layout/footer/footer.component";
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HeaderComponent, SidebarComponent, FooterComponent],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    HeaderComponent,
+    SidebarComponent,
+    FooterComponent,
+  ],
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
-  readonly title = 'lipari-bank-dashboard';
+  readonly title = "lipari-bank-dashboard";
 
   private readonly userService = inject(UserService);
 
@@ -24,7 +37,7 @@ export class AppComponent implements OnInit {
 
   readonly isAuthenticated = computed(() => this.userState() !== null);
 
-  readonly userName = computed(() => this.userState()?.name ?? 'Guest');
+  readonly userName = computed(() => this.userState()?.name ?? "Guest");
 
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe((user) => {
@@ -32,8 +45,7 @@ export class AppComponent implements OnInit {
     });
   }
   onSectionChange(sectionId: string) {
-    console.log('Sezione cambiata in:', sectionId);
+    console.log("Sezione cambiata in:", sectionId);
     // Qui puoi aggiungere logica extra, tipo salvare la sezione corrente
   }
 }
-

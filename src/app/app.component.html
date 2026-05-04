@@ -7,7 +7,8 @@
   data-bs-toggle="offcanvas"
   data-bs-target="#sidebarOffcanvas"
   aria-controls="sidebarOffcanvas"
-  aria-label="Apri menu">
+  aria-label="Apri menu"
+>
   <span class="navbar-toggler-icon"></span>
 </button>
 
@@ -19,16 +20,25 @@
   tabindex="-1"
   id="sidebarOffcanvas"
   aria-labelledby="sidebarOffcanvasLabel"
-  style="width: 280px; background: #0b2340;">
+  style="width: 280px; background: #0b2340"
+>
   <div class="offcanvas-header border-bottom border-white border-opacity-10">
-    <span id="sidebarOffcanvasLabel" class="text-white fw-semibold">Lipari Bank</span>
-    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Chiudi"></button>
+    <span id="sidebarOffcanvasLabel" class="text-white fw-semibold"
+      >Lipari Bank</span
+    >
+    <button
+      type="button"
+      class="btn-close btn-close-white"
+      data-bs-dismiss="offcanvas"
+      aria-label="Chiudi"
+    ></button>
   </div>
   <div class="offcanvas-body p-0">
     <!-- Stesso componente sidebar: su mobile lo wrappa Bootstrap, su desktop è fisso -->
     <app-sidebar
       [userName]="userName()"
-      (sectionSelected)="onSectionChange($event)" />
+      (sectionSelected)="onSectionChange($event)"
+    />
   </div>
 </div>
 
@@ -42,7 +52,8 @@
   <aside class="app-shell__sidebar d-none d-md-block">
     <app-sidebar
       [userName]="userName()"
-      (sectionSelected)="onSectionChange($event)" />
+      (sectionSelected)="onSectionChange($event)"
+    />
   </aside>
 
   <section class="app-shell__main">

@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { Observable, of } from "rxjs";
 
 export interface User {
   name: string;
@@ -7,14 +7,13 @@ export interface User {
 }
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class UserService {
   getCurrentUser(): Observable<User> {
     return of({
-      name: 'Mario Rossi',
-      role: 'client',
+      name: "Mario Rossi",
+      role: "client",
     });
   }
 }
-

@@ -27,8 +27,12 @@
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
 
-  &::-webkit-scrollbar { width: 4px; }
-  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
   &::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.15);
     border-radius: 2px;
@@ -89,13 +93,22 @@
     height: 1.5px;
     background: rgba(255, 255, 255, 0.75);
     border-radius: 2px;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
     transform-origin: center;
 
     // Animazione → X quando aperto
-    &:nth-child(1).open { transform: translateY(6.5px) rotate(45deg); }
-    &:nth-child(2).open { opacity: 0; transform: scaleX(0); }
-    &:nth-child(3).open { transform: translateY(-6.5px) rotate(-45deg); }
+    &:nth-child(1).open {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+    &:nth-child(2).open {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    &:nth-child(3).open {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
   }
 
   @media (max-width: 768px) {
@@ -151,7 +164,10 @@
   color: inherit;
   font-size: 0.9rem;
   opacity: 0.8;
-  transition: background 0.15s ease, opacity 0.15s ease, transform 0.1s ease;
+  transition:
+    background 0.15s ease,
+    opacity 0.15s ease,
+    transform 0.1s ease;
 
   &:hover {
     background: rgba(255, 255, 255, 0.05);
