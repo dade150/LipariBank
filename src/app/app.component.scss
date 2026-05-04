@@ -60,17 +60,15 @@
 // ── Hamburger mobile ──────────────────────────────────────────────────────────
 // Pulsante fluttuante in basso a destra su mobile, Bootstrap lo gestisce
 .app-shell__hamburger {
-  position: fixed;
-  top: 12px;
-  left: 1rem;
-  z-index: 300;
-  background: #0b2340;
-  border: none;
-  border-radius: 6px;
-  padding: 6px 10px;
+  display: flex;
   align-items: center;
   justify-content: center;
-
+  background: var(--lipari-primary);
+  border: none;
+  border-radius: 6px;
+  padding: 5px 8px;
+  margin-right: 0.5rem;
+  cursor: pointer;
   .navbar-toggler-icon {
     // Bootstrap genera l'icona con background-image SVG
     display: inline-block;

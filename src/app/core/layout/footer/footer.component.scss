@@ -6,6 +6,12 @@
   position: fixed;
   bottom: 0;
   right: 0;
-  width: calc(100% - 280px);
   z-index: 1000;
+  /* Default Mobile: larghezza intera */
+  width: 100%;
+
+  /* Desktop: sottrai la larghezza della sidebar */
+  @media (min-width: 768px) {
+    width: calc(100% - 280px);
+  }
 }

@@ -1,16 +1,11 @@
-<!-- 
-  Il markup hamburger è stato rimosso dalla sidebar:
-  su mobile il trigger è gestito da Bootstrap Offcanvas in app.component.html.
-  Su desktop questa sidebar è sempre visibile dentro .app-shell__sidebar.
--->
+<!-- sidebar.component.html -->
 <nav class="sidebar" aria-label="Menu principale">
-  <!-- Brand -->
+  <!-- Sezione Brand (visibile solo se non siamo già in un contesto con testata) -->
   <div class="sidebar__section sidebar__section--brand">
     <div class="sidebar__bank-name">Lipari Bank</div>
     <div class="sidebar__bank-caption">Area Clienti</div>
   </div>
 
-  <!-- Profilo utente: visibile solo se userName è valorizzato -->
   @if (userName()) {
     <div class="sidebar__profile">
       <div class="sidebar__avatar">{{ userInitials() }}</div>
@@ -18,7 +13,6 @@
     </div>
   }
 
-  <!-- Voci di menu -->
   <div class="sidebar__section sidebar__section--menu">
     @for (item of menuItems; track item.id) {
       <a
@@ -26,7 +20,6 @@
         [routerLink]="item.route"
         routerLinkActive="sidebar__item--active"
         (click)="selectSection(item.id)"
-        [attr.aria-label]="item.label"
       >
         <span class="sidebar__item-label">{{ item.label }}</span>
       </a>
