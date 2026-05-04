@@ -1,50 +1,88 @@
-/* 1. Il contenitore principale occupa tutta l'altezza dello schermo */
+// ── Shell desktop ─────────────────────────────────────────────────────────────
+
 .app-shell {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* 2. Creiamo una riga per Sidebar + Main */
-/* Per farlo funzionare con la tua struttura attuale, 
-   dobbiamo assicurarci che Sidebar e Main siano raggruppati o gestiti */
-.app-shell__sidebar {
-  position: fixed; /* La blocchiamo a sinistra come nella foto */
-  left: 0;
-  top: 60px; /* Altezza stimata dell'header */
-  bottom: 0;
-  width: 280px;
-  background-color: #0d2344; /* Blu della tua banca */
-  overflow-y: auto;
-}
-
-.app-shell__main {
-  margin-left: 280px; /* Spostiamo il contenuto per non farlo finire sotto la sidebar */
-  flex: 1;
-  padding: 2rem;
-  background-color: #f4f7f9;
-}
-
 .app-shell__header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 60px;
-  width: 100%;
-  z-index: 100;
+  z-index: 200;
   background: white;
   border-bottom: 1px solid #e0e0e0;
 }
 
-/* 3. IL FOOTER: Ora lo spingiamo a destra per allinearlo al contenuto */
-.app-shell__footer {
-  margin-left: 280px; /* Fondamentale: deve iniziare dove finisce la sidebar */
-  padding: 1rem;
-  background-color: white;
-  border-top: 1px solid #e0e0e0;
-  text-align: center;
-  font-size: 0.85rem;
-  color: #6c7a96;
+.app-shell__sidebar {
+  position: fixed;
+  left: 0;
+  top: 60px;
+  bottom: 0;
+  width: 280px;
+  background-color: #0b2340;
+  z-index: 100;
+  // overflow gestito internamente da SidebarComponent (overflow-y: auto)
 }
 
-/* Il tuo CSS del welcome rimane invariato */
+.app-shell__main {
+  margin-top: 60px;        // sotto l'header fisso
+  margin-left: 280px;      // a destra della sidebar desktop
+  margin-bottom: 56px;     // sopra il footer fisso
+  flex: 1;
+  padding: 2rem;
+  background-color: #f4f7f9;
+
+  // Su mobile: nessun margine laterale (sidebar è offcanvas)
+  @media (max-width: 767.98px) {
+    margin-left: 0;
+    padding: 1rem;
+    margin-top: 60px;
+  }
+}
+
+.app-shell__footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: calc(100% - 280px);
+  z-index: 100;
+
+  // Su mobile: footer a tutta larghezza
+  @media (max-width: 767.98px) {
+    width: 100%;
+  }
+}
+
+// ── Hamburger mobile ──────────────────────────────────────────────────────────
+// Pulsante fluttuante in basso a destra su mobile, Bootstrap lo gestisce
+.app-shell__hamburger {
+  position: fixed;
+  top: 12px;
+  left: 1rem;
+  z-index: 300;
+  background: #0b2340;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  align-items: center;
+  justify-content: center;
+
+  .navbar-toggler-icon {
+    // Bootstrap genera l'icona con background-image SVG
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+}
+
+// ── Welcome ───────────────────────────────────────────────────────────────────
 .app-shell__welcome {
   display: flex;
   align-items: baseline;

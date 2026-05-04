@@ -1,3 +1,17 @@
+// ── Overlay mobile ────────────────────────────────────────────────────────────
+.sidebar__overlay {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+  }
+}
+
+// ── Sidebar ───────────────────────────────────────────────────────────────────
 .sidebar {
   height: 100%;
   padding: 1.5rem 1.25rem;
@@ -6,9 +20,44 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
+  // Scrollbar appare solo se il contenuto supera l'altezza
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+
+  &::-webkit-scrollbar { width: 4px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 2px;
+  }
+
+  // ── Responsive mobile ───────────────────────────────────────────────────
+  // La sidebar esce fuori schermo a sinistra; slide-in con .sidebar--open
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    z-index: 100;
+    transform: translateX(-100%);
+    transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+
+    &--open {
+      transform: translateX(0);
+      box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+    }
+  }
 }
 
+// ── Brand ─────────────────────────────────────────────────────────────────────
 .sidebar__section--brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding-bottom: 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -23,6 +72,69 @@
   color: rgba(255, 255, 255, 0.75);
 }
 
+// ── Hamburger ─────────────────────────────────────────────────────────────────
+.sidebar__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+
+  // Tre linee
+  span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 2px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    transform-origin: center;
+
+    // Animazione → X quando aperto
+    &:nth-child(1).open { transform: translateY(6.5px) rotate(45deg); }
+    &:nth-child(2).open { opacity: 0; transform: scaleX(0); }
+    &:nth-child(3).open { transform: translateY(-6.5px) rotate(-45deg); }
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+}
+
+// ── Profilo utente ────────────────────────────────────────────────────────────
+.sidebar__profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar__avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(26, 35, 126, 0.7); // #1a237e del footer
+  border: 1px solid rgba(92, 107, 192, 0.6);
+  color: #c5cae9;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.sidebar__username {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// ── Menu ──────────────────────────────────────────────────────────────────────
 .sidebar__section--menu {
   display: flex;
   flex-direction: column;
@@ -40,20 +152,22 @@
   font-size: 0.9rem;
   opacity: 0.8;
   transition: background 0.15s ease, opacity 0.15s ease, transform 0.1s ease;
-}
 
-.sidebar__item:hover {
-  background: rgba(255, 255, 255, 0.05);
-  opacity: 1;
-  transform: translateY(-1px);
-}
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+    opacity: 1;
+    transform: translateY(-1px);
+  }
 
-.sidebar__item--active {
-  background: rgba(255, 255, 255, 0.12);
-  opacity: 1;
+  // Stato attivo: palette coerente col footer #1a237e
+  &--active {
+    background: rgba(26, 35, 126, 0.6);
+    border-left: 3px solid #5c6bc0;
+    padding-left: calc(0.75rem - 3px);
+    opacity: 1;
+  }
 }
 
 .sidebar__item-label {
   flex: 1;
 }
-

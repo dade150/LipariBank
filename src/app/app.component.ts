@@ -31,5 +31,9 @@ export class AppComponent implements OnInit {
       this.userState.set(user);
     });
   }
+  onSectionChange(sectionId: string) {
+    console.log('Sezione cambiata in:', sectionId);
+    // Qui puoi aggiungere logica extra, tipo salvare la sezione corrente
+  }
 }
 

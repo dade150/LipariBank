@@ -19,9 +19,17 @@ export const routes: Routes = [
     path: 'polizze',
     component: DashboardComponent,
   },
+  // Aggiunte le due route mancanti che impedivano routerLinkActive di attivarsi
+  {
+    path: 'conto-corrente',
+    component: DashboardComponent,
+  },
+  {
+    path: 'amministrazione',
+    component: DashboardComponent,
+  },
   {
     path: '**',
     redirectTo: 'dashboard',
   },
 ];
-

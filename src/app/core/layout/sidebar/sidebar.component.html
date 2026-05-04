@@ -1,33 +1,36 @@
-<nav class="sidebar">
+<!-- 
+  Il markup hamburger è stato rimosso dalla sidebar:
+  su mobile il trigger è gestito da Bootstrap Offcanvas in app.component.html.
+  Su desktop questa sidebar è sempre visibile dentro .app-shell__sidebar.
+-->
+<nav class="sidebar" aria-label="Menu principale">
+
+  <!-- Brand -->
   <div class="sidebar__section sidebar__section--brand">
     <div class="sidebar__bank-name">Lipari Bank</div>
     <div class="sidebar__bank-caption">Area Clienti</div>
   </div>
 
+  <!-- Profilo utente: visibile solo se userName è valorizzato -->
+  @if (userName()) {
+    <div class="sidebar__profile">
+      <div class="sidebar__avatar">{{ userInitials() }}</div>
+      <span class="sidebar__username">{{ userName() }}</span>
+    </div>
+  }
+
+  <!-- Voci di menu -->
   <div class="sidebar__section sidebar__section--menu">
-    <a
-      class="sidebar__item"
-      routerLink="/dashboard"
-      routerLinkActive="sidebar__item--active"
-    >
-      <span class="sidebar__item-label">Dashboard</span>
-    </a>
-
-    <a
-      class="sidebar__item"
-      routerLink="/investimenti"
-      routerLinkActive="sidebar__item--active"
-    >
-      <span class="sidebar__item-label">Investimenti</span>
-    </a>
-
-    <a
-      class="sidebar__item"
-      routerLink="/polizze"
-      routerLinkActive="sidebar__item--active"
-    >
-      <span class="sidebar__item-label">Polizze</span>
-    </a>
+    @for (item of menuItems; track item.id) {
+      <a
+        class="sidebar__item"
+        [routerLink]="item.route"
+        routerLinkActive="sidebar__item--active"
+        (click)="selectSection(item.id)"
+        [attr.aria-label]="item.label">
+        <span class="sidebar__item-label">{{ item.label }}</span>
+      </a>
+    }
   </div>
-</nav>
 
+</nav>
